@@ -1,106 +1,259 @@
-# Privacy Policy for ADIM ROTA
+# AdımRota — Gizlilik Politikası / Privacy Policy
 
-**Effective Date:** March 4, 2026
+**Son Güncelleme:** 27 Mart 2026
+**Geliştirici:** Yunus Emre Sevindik
+**İletişim:** yunpels@icloud.com
 
-AdimRota (“the App”) helps users track walking activity, view routes, and optionally share posts. This Privacy Policy explains what data we collect, how we use it, and your choices.
+---
 
-1) Information We Collect
+## 1. Giriş
 
-Depending on the features you use and the permissions you grant, the App may collect:
+AdımRota ("Uygulama"), kullanıcıların yürüyüş aktivitelerini takip etmelerine, rotalarını harita üzerinde görüntülemelerine, uyku sürelerini kaydetmelerine, topluluk akışında paylaşım yapmalarına ve yürüyüş başarılarına dayalı uygulama içi koleksiyon kartları kazanmalarına olanak tanıyan bir sağlık ve fitness uygulamasıdır.
 
-a) Location Data (Optional)
+Bu Gizlilik Politikası, hangi verilerin toplandığını, nasıl kullanıldığını, kimlerle paylaşıldığını ve kullanıcıların verileri üzerindeki haklarını açıklar.
 
-If you allow location access, we collect location coordinates to draw your walking route on the map, save your route history, and (only if you choose) attach location to a shared post.
+---
 
-b) Motion / Step Data (Optional)
+## 2. Toplanan Veriler
 
-If you allow motion/fitness permissions, we read step count and related activity signals to estimate distance, activity duration, and calories.
+AdımRota, yalnızca uygulamanın temel özelliklerini sunmak için gerekli olan verileri toplar. Toplanan veri kategorileri aşağıda detaylı olarak açıklanmıştır:
 
-c) Photos / Media You Upload (Optional)
+### 2.1 Hesap Bilgileri (Kayıt Olduğunuzda)
 
-If you choose to create a post, you may upload a photo (and optionally a caption).
+Hesap oluşturduğunuzda aşağıdaki bilgiler toplanır:
 
-Posts can be set to Public (visible to others in the community feed) or Private (visible only to you).
+| Veri | Amaç |
+|------|-------|
+| **E-posta adresi** | Hesap kimlik doğrulaması ve oturum açma |
+| **Şifre** | Hesap güvenliği (Firebase Authentication tarafından şifrelenerek saklanır) |
+| **Kullanıcı Kimliği (UID)** | Rota, paylaşım ve koleksiyon verilerinin hesabınızla ilişkilendirilmesi |
 
-d) Account Information (If you sign in)
+**İsteğe bağlı olarak** sağlayabileceğiniz bilgiler:
 
-If you create an account or sign in, we store basic account identifiers (e.g., user ID) to associate your routes and posts with your account.
+| Veri | Amaç |
+|------|-------|
+| **Boy (cm)** | BMI (Vücut Kitle İndeksi) hesaplaması ve daha doğru kalori tahmini |
+| **Kilo (kg)** | Kalori yakım hesaplaması ve BMI analizi |
+| **Biyografi** | Profil sayfanızda görünen kişisel tanıtım metni |
 
-e) Usage / Diagnostics (Limited)
+> **Not:** Telefon numarası toplanmaz. Kayıt için yalnızca e-posta ve şifre gereklidir.
 
-We may collect basic technical information necessary to operate and improve the App (e.g., crash reports, performance data), depending on your device settings and enabled services.
+### 2.2 Konum Verileri (İzninize Bağlı)
 
-2) How We Use Your Information
+Konum verisi, yalnızca cihaz ayarlarından konum iznini verdiğinizde toplanır. Konum verileri şu amaçlarla kullanılır:
 
-We use the collected data to:
+- **Yürüyüş rota takibi:** Yürüyüşünüzü harita üzerinde çizmek, mesafe hesaplamak ve rota geçmişinizi kaydetmek
+- **Canlı konum paylaşımı:** Yalnızca siz manuel olarak başlattığınızda ve belirlediğiniz süre boyunca (15 dakika veya 1 saat) konumunuz paylaşılır. **Otomatik konum paylaşımı yapılmaz.** Her paylaşım için ayrı onay gerekir
+- **Paylaşımlardaki konum etiketi:** Topluluk akışında paylaşım yaparken konum bilgisini dahil etmek isteğe bağlıdır ve varsayılan olarak **kapalıdır**
+- **Ters coğrafi kodlama:** Koordinatlarınızın şehir/ilçe adına dönüştürülmesi (örn. "Kadıköy, İstanbul")
 
-Provide route tracking, route history, and walking statistics (daily/weekly/monthly views)
+Toplanan konum bilgileri:
 
-Estimate calories and activity summaries
+| Veri | Detay |
+|------|-------|
+| **GPS koordinatları (enlem/boylam)** | Rota çizimi ve mesafe hesabı |
+| **Yatay doğruluk** | GPS sinyal kalitesi ölçümü |
+| **Hız** | Anlık yürüyüş hızı |
+| **Şehir/ilçe adı** | Ters coğrafi kodlama ile elde edilen konum adı |
 
-Enable community posting (when you choose to share)
+### 2.3 Hareket ve Adım Verileri (İzninize Bağlı)
 
-Maintain security, prevent abuse, and improve the App
+Cihazınızın hareket sensörleri aracılığıyla aşağıdaki veriler okunur:
 
-3) Public vs. Private Sharing
+| Veri | Kaynak | Amaç |
+|------|--------|-------|
+| **Adım sayısı** | Core Motion (CMPedometer) | Günlük adım takibi ve hedef izleme |
+| **Yürüme mesafesi** | Core Motion (CMPedometer) | Mesafe hesaplama (km) |
+| **Aktivite türü** | Core Motion (CMMotionActivity) | Yürüyüş/koşu/araç tespiti |
+| **Tahmini kalori** | Uygulama içi hesaplama | Mesafe, süre ve kiloya dayalı kalori tahmini |
 
-When you create a post:
+> **Önemli:** Bu veriler **Core Motion framework'ü** kullanılarak toplanır. HealthKit framework'ünden ayrı bir sistemdir.
 
-Public Post: Visible in the community feed to other users. If you enable it, location may be shown (for example, city/area).
+### 2.4 Uyku Verileri — HealthKit (İzninize Bağlı)
 
-Private Post: Visible only to you under “My Posts.”
+Uygulamada iki farklı uyku takip yöntemi bulunur:
 
-You can delete your posts at any time. Deleted posts are removed from the App’s database and storage (some residual caching may persist briefly due to network synchronization).
+**a) Manuel Uyku Takibi:**
+- "Uyudum" butonuna basarak uyku başlangıcını, "Uyandım" butonuna basarak bitiş zamanını kaydedersiniz
+- Bu veriler Firestore veritabanında saklanır
 
-4) Data Storage and Third-Party Services
+**b) HealthKit Entegrasyonu (İsteğe Bağlı):**
+- "HealthKit'ten Getir" butonu ile Apple Sağlık uygulamasındaki uyku analizi verilerinizi içe aktarabilirsiniz
+- Uygulama, HealthKit'ten yalnızca **uyku analizi (Sleep Analysis)** verisini **okuma** izni ister
+- HealthKit'e herhangi bir veri **yazılmaz**
+- İçe aktarılan bilgiler: uyku başlangıç saati, bitiş saati ve toplam uyku süresi
 
-AdimRota may use third-party cloud services to store and process data, such as:
+### 2.5 Fotoğraflar ve Medya (İsteğe Bağlı)
 
-Firebase (Google) for authentication, database (Firestore), and media storage.
+Topluluk akışında paylaşım oluştururken:
 
-These providers process data on our behalf to deliver App features. Their processing is governed by their own privacy and security practices.
+- Fotoğraf galerinizden seçtiğiniz fotoğraflar Firebase Storage'a yüklenir
+- Paylaşımlarınıza isteğe bağlı metin açıklaması (caption) ekleyebilirsiniz
+- Paylaşımlarınızı **herkese açık** veya **gizli** (sadece siz görebilirsiniz) olarak ayarlayabilirsiniz
 
-5) Legal Bases (If Applicable)
+### 2.6 Koleksiyon Kartları (NFT Ödülleri)
 
-Where required by law, we process data based on:
+Koleksiyon kartları, yürüyüş aktivitelerinize dayalı olarak kazanılan **uygulama içi başarı ödülleridir**:
 
-Your consent (e.g., location, photos, motion/fitness permissions)
+- **Normal:** Günlük yürüyüş hedefini tamamladığınızda kazanılır
+- **Nadir:** 5 km üzeri günlük yürüyüş mesafesinde kazanılır
+- **Efsanevi:** 10 km üzeri günlük yürüyüş mesafesinde kazanılır
 
-Contractual necessity (to provide the App’s core features)
+> **Önemli:** Bu kartların blockchain, kripto para veya herhangi bir harici cüzdan ile **hiçbir ilgisi yoktur**. Satılamaz, takas edilemez ve uygulama dışında kullanılamaz. Tamamen uygulama içi dekoratif ödüllerdir.
 
-Legitimate interests (security, preventing abuse, improving reliability)
+### 2.7 Kullanıcı Etkileşim Verileri
 
-6) Your Choices and Controls
+| Veri | Amaç |
+|------|-------|
+| **Engellenen kullanıcılar listesi** | İstemediğiniz kullanıcıların paylaşımlarını filtreleme |
+| **Paylaşım tercihleri** | Herkese açık/gizli, konum dahil etme tercihleri |
+| **Günlük adım hedefi** | Kişisel hedef takibi (varsayılan: 8.000 adım) |
+| **Gizlilik tercihleri** | Fiziksel veri, rota ve profil görünürlük ayarları |
 
-You can control your data in these ways:
+---
 
-Permissions: You can enable/disable location, motion/fitness, and photo access in your device settings.
+## 3. Verilerin Kullanım Amaçları
 
-Public/Private: Choose whether a post is public or private before sharing.
+Toplanan veriler yalnızca aşağıdaki amaçlarla kullanılır:
 
-Delete Content: You can delete uploaded posts and associated media from within the App.
+1. **Uygulama işlevselliği:** Rota takibi, adım sayma, mesafe ve kalori hesaplama, uyku takibi
+2. **Topluluk özellikleri:** Post paylaşımı, topluluk akışı ve kullanıcı etkileşimi
+3. **Kişiselleştirme:** Günlük hedef takibi, BMI analizi, seviye rozetleri ve koleksiyon kartları
+4. **Güvenlik:** Kullanıcı engelleme, kötüye kullanım önleme ve hesap koruması
+5. **Uygulama iyileştirmesi:** Performans optimizasyonu ve hata düzeltme
 
-Account Deletion: If the App provides an in-app account deletion option, you can request deletion of your account and associated data. If not available, contact us using the email below.
+> **Bu uygulama, verileri reklam, pazarlama veya üçüncü taraf veri analizi amacıyla KULLANMAZ.**
 
-7) Data Retention
+---
 
-We retain your data only as long as needed to provide App features, or until you delete it, unless a longer retention period is required by law.
+## 4. Herkese Açık ve Gizli Paylaşım
 
-8) Security
+### Topluluk Akışı Paylaşımları
 
-We take reasonable measures to protect your data. No method of transmission or storage is 100% secure, but we strive to use industry-standard protections.
+- **Herkese Açık (Public):** Akışta tüm kullanıcılara görünür. Konum bilgisini dahil etme varsayılan olarak **kapalıdır**; yalnızca siz açtığınızda paylaşımda görünür
+- **Gizli (Private):** Yalnızca "Paylaşımlarım" bölümünde size görünür, akışta gösterilmez
 
-9) Children’s Privacy
+### Canlı Konum Paylaşımı
 
-AdimRota is not intended for children under 13 (or the minimum age required in your jurisdiction). We do not knowingly collect personal data from children.
+- Canlı konum paylaşımı **her seferinde manuel olarak başlatılmalıdır**
+- Süreler: 15 dakika veya 1 saat
+- Paylaşım başlamadan önce **konum izni onay uyarısı** gösterilir
+- "Haritada görünür ol" seçeneği varsayılan olarak **kapalıdır**
+- **Otomatik check-in özelliği yoktur**
+- Yalnızca paylaşım kodunu bildiğiniz kişiler konumunuzu görebilir
 
-10) Changes to This Policy
+### Kullanıcı Engelleme
 
-We may update this Privacy Policy from time to time. We will revise the “Last updated” date and, where appropriate, notify you through the App.
+- Topluluk akışındaki diğer kullanıcıları engelleyebilirsiniz
+- Engellenen kullanıcıların paylaşımları akışınızda otomatik olarak filtrelenir
+- Engelleri "Gizlilik ve Güvenlik" ayarlarından kaldırabilirsiniz
 
-11) Contact
+---
 
-If you have questions or requests about this Privacy Policy, contact us:
+## 5. Veri Depolama ve Üçüncü Taraf Hizmetleri
 
-Email: [YOUR EMAIL]
-Developer/Company: [YOUR NAME / COMPANY]
+AdımRota, aşağıdaki üçüncü taraf hizmetlerini kullanır:
+
+| Hizmet | Sağlayıcı | Kullanım Amacı |
+|--------|-----------|----------------|
+| **Firebase Authentication** | Google | E-posta/şifre ile hesap yönetimi |
+| **Cloud Firestore** | Google | Kullanıcı profilleri, rotalar, paylaşımlar, koleksiyon kartları, engellenen kullanıcılar ve uyku kayıtlarının saklanması |
+| **Firebase Storage** | Google | Paylaşımlardaki fotoğrafların saklanması |
+
+Bu hizmetler, verileri bizim adımıza işler. Kendi güvenlik ve gizlilik politikalarına tabidirler:
+- Google Firebase Gizlilik Politikası: https://firebase.google.com/support/privacy
+
+> **AdımRota, kullanıcı verilerini hiçbir üçüncü taraf veri komisyoncusuna (data broker) satmaz veya paylaşmaz.**
+
+---
+
+## 6. Kullanılan Cihaz Çerçeveleri (Frameworks)
+
+| Framework | Kullanım |
+|-----------|----------|
+| **Core Motion** | Adım sayacı, mesafe, aktivite algılama |
+| **Core Location** | GPS rota takibi, canlı konum, ters coğrafi kodlama |
+| **HealthKit** | Uyku analizi verilerini okuma (yazma yapılmaz) |
+| **PhotosUI** | Galeri erişimi (paylaşım fotoğrafı seçimi) |
+| **MapKit** | Harita görüntüleme |
+
+---
+
+## 7. Kullanıcı Hakları ve Kontroller
+
+Verileriniz üzerinde tam kontrole sahipsiniz:
+
+| Kontrol | Açıklama |
+|---------|----------|
+| **Cihaz İzinleri** | Konum, hareket/fitness ve fotoğraf erişimini cihaz Ayarlar'ından açıp kapatabilirsiniz |
+| **HealthKit İzni** | HealthKit uyku verisi okumayı Ayarlar → Sağlık → Veri Erişimi bölümünden yönetebilirsiniz |
+| **Paylaşım Kontrolü** | Her paylaşımı herkese açık veya gizli yapabilirsiniz |
+| **Konum Dahil Etme** | Paylaşımlara konum ekleme varsayılan olarak kapalıdır, her seferinde manuel açmanız gerekir |
+| **Canlı Konum** | Her seferinde manuel başlatılır, otomatik paylaşım yoktur |
+| **Kullanıcı Engelleme** | İstemediğiniz kullanıcıları engelleyebilir, engeli kaldırabilirsiniz |
+| **Paylaşım Silme** | Paylaşımlarınızı istediğiniz zaman silebilirsiniz |
+| **Görünürlük Ayarları** | Fiziksel veriler, rotalar ve profil görünürlüğünü "Herkes", "Takipçiler" veya "Sadece Ben" olarak ayarlayabilirsiniz |
+| **Konum Geçmişi Temizleme** | Tüm yürüyüş konum geçmişinizi silebilirsiniz |
+| **Hesaptan Çıkış** | İstediğiniz zaman hesabınızdan çıkış yapabilirsiniz |
+| **Hesap Silme** | Hesabınızı ve tüm ilişkili verileri kalıcı olarak silebilirsiniz |
+
+---
+
+## 8. Veri Saklama Süresi
+
+- Verileriniz, uygulama özelliklerini sunmak için gerekli olduğu sürece saklanır
+- Sildiğiniz paylaşımlar, veritabanından ve depolama alanından kaldırılır (ağ senkronizasyonu nedeniyle kısa süreli önbellekte kalabilir)
+- Hesabınızı sildiğinizde tüm ilişkili veriler kalıcı olarak silinir
+- Yasal zorunluluklar gerektirmedikçe, veriler gereksinim ortadan kalktığında silinir
+
+---
+
+## 9. Veri Güvenliği
+
+- Firebase Authentication, şifreleri endüstri standardı güvenlik protokolleriyle şifreler
+- Tüm veri aktarımları HTTPS (TLS) üzerinden gerçekleştirilir
+- Firebase güvenlik kuralları, kullanıcıların yalnızca kendi verilerine erişmesini sağlar
+- Hiçbir güvenlik yöntemi %100 garantili olmamakla birlikte, verilerinizi korumak için endüstri standardı önlemler uygulanmaktadır
+
+---
+
+## 10. Kullanıcı Takibi (Tracking)
+
+- AdımRota, kullanıcıları **reklam amacıyla takip etmez**
+- Uygulama verileri, üçüncü taraf veri komisyoncuları ile **paylaşılmaz**
+- AppTrackingTransparency (ATT) izni, uygulama tarafından **istenmez** çünkü kullanıcı takibi yapılmamaktadır
+
+---
+
+## 11. Çocukların Gizliliği
+
+AdımRota, 13 yaşın altındaki çocuklara (veya yargı bölgesizin gerektirdiği asgari yaş) yönelik değildir. 13 yaşın altındaki bireylerden bilerek kişisel veri toplamayız. Böyle bir durumun farkına varırsak, ilgili verileri derhal sileriz.
+
+---
+
+## 12. Instagram Paylaşımı
+
+Uygulama, rota istatistiklerinizi Instagram Hikâyeleri olarak paylaşmanıza olanak tanır. Bu özellik kullanıldığında:
+
+- Paylaşım kartı cihazınızda oluşturulur
+- Veri, Instagram uygulamasına **doğrudan cihazınız üzerinden** aktarılır
+- AdımRota sunucuları üzerinden herhangi bir Instagram verisi geçmez
+
+---
+
+## 13. Politika Değişiklikleri
+
+Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklik yapıldığında "Son Güncelleme" tarihini revize edeceğiz. Önemli değişiklikler için uygulama içinden bildirim yapılabilir.
+
+---
+
+## 14. İletişim
+
+Bu Gizlilik Politikası hakkında sorularınız, talepleriniz veya geri bildirimleriniz için:
+
+- **E-posta:** yunusemresevindik@icloud.com
+- **Geliştirici:** Yunus Emre Sevindik
+
+---
+
+*Bu gizlilik politikası, AdımRota uygulamasının 1.0 sürümü için geçerlidir.*
